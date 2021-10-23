@@ -1,4 +1,4 @@
-import FilmsList from '../films-list/films-list';
+import FilmsList from '../../films-list/films-list';
 
 type MainProps = {
   title: string,
