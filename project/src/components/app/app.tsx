@@ -1,8 +1,18 @@
 import Main from '../main/main';
 
-function App(): JSX.Element {
+type AppProps = {
+  title: string,
+  genre: string,
+  release: string
+}
+
+function App({title, genre, release}: AppProps): JSX.Element {
   return (
-    <Main />
+    <Main
+      title = {title}
+      genre = {genre}
+      release = {release}
+    />
   );
 }
 
