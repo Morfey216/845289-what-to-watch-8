@@ -34,7 +34,7 @@ function App({title, genre, release}: AppProps): JSX.Element {
           path={AppRoute.MyList}
           render={() => <MyList/>}
           authorizationStatus={AuthorizationStatus.NoAuth}
-        ></PrivateRoute>
+        />
         <Route path={AppRoute.Film} exact>
           <Film/>
         </Route>
