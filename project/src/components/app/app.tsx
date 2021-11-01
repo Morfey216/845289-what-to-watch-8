@@ -36,13 +36,13 @@ function App({title, genre, release}: AppProps): JSX.Element {
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path={AppRoute.Film} exact>
-          <Film/>
+          <Film />
         </Route>
         <Route path={AppRoute.AddReview} exact>
-          <AddReview/>
+          <AddReview />
         </Route>
         <Route path={AppRoute.Player} exact>
-          <Player/>
+          <Player />
         </Route>
         <Route>
           <NotFound />
