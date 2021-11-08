@@ -1,5 +1,6 @@
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
+import { Films } from '../../types/films';
 import AddReview from '../pages/add-review/add-review';
 import Film from '../pages/film/film';
 import Main from '../pages/main/main';
@@ -12,10 +13,11 @@ import PrivateRoute from '../private-route/private-route';
 type AppProps = {
   title: string,
   genre: string,
-  release: string
+  release: string,
+  films: Films,
 }
 
-function App({title, genre, release}: AppProps): JSX.Element {
+function App({title, genre, release, films}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -24,6 +26,7 @@ function App({title, genre, release}: AppProps): JSX.Element {
             title = {title}
             genre = {genre}
             release = {release}
+            films = {films}
           />
         </Route>
         <Route path={AppRoute.SignIn} exact>
@@ -32,7 +35,7 @@ function App({title, genre, release}: AppProps): JSX.Element {
         <PrivateRoute
           exact
           path={AppRoute.MyList}
-          render={() => <MyList/>}
+          render={() => <MyList />}
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path={AppRoute.Film} exact>

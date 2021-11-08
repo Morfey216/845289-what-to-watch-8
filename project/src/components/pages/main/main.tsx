@@ -1,13 +1,15 @@
+import { Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Logo from '../../logo/logo';
 
 type MainProps = {
   title: string,
   genre: string,
-  release: string
+  release: string,
+  films: Films,
 }
 
-function Main({title, genre, release}: MainProps): JSX.Element {
+function Main({title, genre, release, films}: MainProps): JSX.Element {
   return (
     <>
       <section className="film-card">
@@ -101,7 +103,7 @@ function Main({title, genre, release}: MainProps): JSX.Element {
             </li>
           </ul>
 
-          <FilmsList />
+          <FilmsList films = {films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
