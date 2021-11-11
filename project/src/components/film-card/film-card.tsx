@@ -14,7 +14,7 @@ function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {
       onMouseOut={() => setActiveFilm(0)}
     >
       <div className="small-film-card__image">
-        <img src={previewImage} alt={film.name} width="280" height="175" />
+        <img src={previewImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
         <a className="small-film-card__link" href="film-page.html">{name}</a>

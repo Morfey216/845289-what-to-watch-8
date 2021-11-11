@@ -1,9 +1,17 @@
-function AddReview(): JSX.Element {
+import { Film } from '../../../types/films';
+
+type AddReviewProps = {
+  film: Film,
+}
+
+function AddReview({film}: AddReviewProps): JSX.Element {
+  const {posterImage, backgroundImage, name} = film;
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -41,7 +49,7 @@ function AddReview(): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={posterImage} alt={name} width="218" height="327" />
         </div>
       </div>
 
