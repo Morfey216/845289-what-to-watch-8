@@ -2,6 +2,7 @@ import { MAX_NUMBER_OF_ACTORS, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../cons
 import { films } from '../../../mocks/films';
 import { Film } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
+import Footer from '../../footer/footer';
 
 type SelectedFilmProps = {
   film: Film,
@@ -124,19 +125,7 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
           } />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

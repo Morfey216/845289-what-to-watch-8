@@ -1,6 +1,7 @@
 import { Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Logo from '../../logo/logo';
+import Footer from '../../footer/footer';
 
 type MainProps = {
   title: string,
@@ -110,13 +111,7 @@ function Main({title, genre, release, films}: MainProps): JSX.Element {
           </div>
         </section>
 
-        <footer className="page-footer">
-          <Logo lightClass="logo__link--light"/>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>);
 }
