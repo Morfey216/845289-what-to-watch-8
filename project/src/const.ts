@@ -1,3 +1,6 @@
+export const MAX_NUMBER_OF_ACTORS = 4;
+export const MAX_NUMBER_OF_SIMILAR_FILMS = 4;
+
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',

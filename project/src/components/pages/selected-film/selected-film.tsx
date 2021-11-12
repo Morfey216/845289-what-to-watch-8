@@ -1,5 +1,6 @@
+import { MAX_NUMBER_OF_ACTORS, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../const';
 import { films } from '../../../mocks/films';
-import { Film, Films } from '../../../types/films';
+import { Film } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 
 type SelectedFilmProps = {
@@ -68,7 +69,7 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={film.posterImage} alt={film.name} width="218" height="327" />
+              <img src={film.posterImage} alt={`${film.name} poster`} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
@@ -99,7 +100,14 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
 
                 <p className="film-card__director"><strong>Director: {film.director}</strong></p>
 
-                <p className="film-card__starring"><strong>Starring: {film.starring.slice(0, 4).map((it) => it).join(', ')} and other</strong></p>
+                <p className="film-card__starring">
+                  <strong>
+                    Starring: {film.starring.length > MAX_NUMBER_OF_ACTORS
+                      ? `${film.starring.slice(0, MAX_NUMBER_OF_ACTORS).map((it) => it).join(', ')} and other`
+                      : `${film.starring.map((it) => it).join(', ')}`
+                    }
+                  </strong>
+                </p>
               </div>
             </div>
           </div>
@@ -110,7 +118,10 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList films = {films.slice(0, 4)} />
+          <FilmsList films = {films.length > MAX_NUMBER_OF_SIMILAR_FILMS
+            ? films.slice(0, MAX_NUMBER_OF_SIMILAR_FILMS)
+            : films
+          } />
         </section>
 
         <footer className="page-footer">
