@@ -3,11 +3,11 @@ import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
 
-type MyList = {
+type MyListProps = {
   films: Films,
 }
 
-function MyList({films}: MyList): JSX.Element {
+function MyList({films}: MyListProps): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">

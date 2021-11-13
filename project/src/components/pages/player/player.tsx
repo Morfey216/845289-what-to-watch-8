@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { Film } from '../../../types/films';
 
 type PlayerProps = {
@@ -6,12 +7,17 @@ type PlayerProps = {
 
 function Player({film}: PlayerProps): JSX.Element {
   const {posterImage, videoLink} = film;
+  const history = useHistory();
+
+  const handleExitButtonClick = () => {
+    history.goBack();
+  };
 
   return (
     <div className="player">
       <video src={videoLink} className="player__video" poster={posterImage}></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button type="button" className="player__exit" onClick={handleExitButtonClick}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">

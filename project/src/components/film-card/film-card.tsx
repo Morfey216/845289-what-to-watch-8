@@ -1,3 +1,5 @@
+import { Link, generatePath } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { Film } from '../../types/films';
 
 type FilmCardProps = {
@@ -8,6 +10,10 @@ type FilmCardProps = {
 function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {
   const {id, name, previewImage} = film;
 
+  const pathToFilm = generatePath(AppRoute.Film, {
+    id: id,
+  });
+
   return (
     <article className="small-film-card catalog__films-card"
       onMouseOver={() => setActiveFilm(id)}
@@ -17,7 +23,9 @@ function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {
         <img src={previewImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">{name}</a>
+        <Link to={pathToFilm} className="small-film-card__link">
+          {name}
+        </Link>
       </h3>
     </article>
   );

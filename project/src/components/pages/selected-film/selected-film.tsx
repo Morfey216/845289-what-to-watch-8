@@ -1,15 +1,30 @@
-import { MAX_NUMBER_OF_ACTORS, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../const';
-import { films } from '../../../mocks/films';
-import { Film } from '../../../types/films';
+import { Link, useHistory , generatePath } from 'react-router-dom';
+import { AppRoute, MAX_NUMBER_OF_ACTORS, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../const';
+import { Film, Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
 
 type SelectedFilmProps = {
   film: Film,
+  films: Films,
 }
 
-function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
+function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
+  const history = useHistory();
+
+  const pathToAddReview = generatePath(AppRoute.AddReview, {
+    id: film.id,
+  });
+
+  const pathToPlayer = generatePath(AppRoute.Player, {
+    id: film.id,
+  });
+
+  const handlePlayButtonClick = () => {
+    history.push(pathToPlayer);
+  };
+
   return (
     <>
       <section className="film-card film-card--full">
@@ -30,7 +45,9 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
                 </div>
               </li>
               <li className="user-block__item">
-                <a  href="/" className="user-block__link">Sign out</a>
+                <Link to={AppRoute.Main} className="user-block__link">
+                  Sign out
+                </Link>
               </li>
             </ul>
           </header>
@@ -44,19 +61,24 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+
+                <button className="btn btn--play film-card__button" type="button" onClick={handlePlayButtonClick}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
+
                 <button className="btn btn--list film-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+
+                <Link to={pathToAddReview} className="btn film-card__button">
+                  Add review
+                </Link>
               </div>
             </div>
           </div>
@@ -100,8 +122,7 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
                   <strong>
                     Starring: {film.starring.length > MAX_NUMBER_OF_ACTORS
                       ? `${film.starring.slice(0, MAX_NUMBER_OF_ACTORS).map((it) => it).join(', ')} and other`
-                      : `${film.starring.map((it) => it).join(', ')}`
-                    }
+                      : `${film.starring.map((it) => it).join(', ')}`}
                   </strong>
                 </p>
               </div>
@@ -116,8 +137,8 @@ function SelectedFilm({film}: SelectedFilmProps): JSX.Element {
 
           <FilmsList films = {films.length > MAX_NUMBER_OF_SIMILAR_FILMS
             ? films.slice(0, MAX_NUMBER_OF_SIMILAR_FILMS)
-            : films
-          } />
+            : films}
+          />
         </section>
 
         <Footer />

@@ -9,7 +9,7 @@ function Footer(): JSX.Element {
         <p>© 2019 What to watch Ltd.</p>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;
