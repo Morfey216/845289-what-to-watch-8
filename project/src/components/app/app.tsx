@@ -1,5 +1,5 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { Films } from '../../types/films';
 import AddReview from '../pages/add-review/add-review';
 import SelectedFilm from '../pages/selected-film/selected-film';
