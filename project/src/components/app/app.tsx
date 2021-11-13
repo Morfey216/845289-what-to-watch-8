@@ -39,7 +39,7 @@ function App({title, genre, release, films}: AppProps): JSX.Element {
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path={AppRoute.Film} exact>
-          <SelectedFilm film={films[0]}/>
+          <SelectedFilm film={films[0]} films={films}/>
         </Route>
         <Route path={AppRoute.AddReview} exact>
           <AddReview film={films[0]}/>
