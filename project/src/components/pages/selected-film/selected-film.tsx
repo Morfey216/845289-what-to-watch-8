@@ -4,6 +4,7 @@ import { Film, Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
+import UserBlock from '../../user-block/user-block';
 
 type SelectedFilmProps = {
   film: Film,
@@ -37,19 +38,7 @@ function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
 
           <header className="page-header film-card__head">
             <Logo />
-
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <Link to={AppRoute.Main} className="user-block__link">
-                  Sign out
-                </Link>
-              </li>
-            </ul>
+            <UserBlock />
           </header>
 
           <div className="film-card__wrap">
