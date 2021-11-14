@@ -22,7 +22,6 @@ function Breadcrumbs({id, name}: BreadcrumbsProps): JSX.Element {
           <Link to={pathToFilm} className="breadcrumbs__link">{name}</Link>
         </li>
         <li className="breadcrumbs__item">
-          <a className="breadcrumbs__link" href="/">Add review</a>
           <Link to={pathToAddReview} className="breadcrumbs__link">Add review</Link>
         </li>
       </ul>
