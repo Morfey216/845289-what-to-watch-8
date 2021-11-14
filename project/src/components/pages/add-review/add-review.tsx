@@ -1,5 +1,6 @@
 import { Film } from '../../../types/films';
 import AddReviewForm from '../../add-review-form/add-review-form';
+import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
@@ -21,18 +22,7 @@ function AddReview({film}: AddReviewProps): JSX.Element {
 
         <header className="page-header">
           <Logo />
-
-          <nav className="breadcrumbs">
-            <ul className="breadcrumbs__list">
-              <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{name}</a>
-              </li>
-              <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link" href="/">Add review</a>
-              </li>
-            </ul>
-          </nav>
-
+          <Breadcrumbs id={id} name={name} />
           <UserBlock />
         </header>
 
