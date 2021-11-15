@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { Film } from '../../../types/films';
 
 type PlayerProps = {
-  film: Film,
+  film: Film;
 }
 
 function Player({film}: PlayerProps): JSX.Element {

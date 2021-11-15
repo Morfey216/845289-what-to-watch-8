@@ -5,10 +5,10 @@ import Footer from '../../footer/footer';
 import UserBlock from '../../user-block/user-block';
 
 type MainProps = {
-  title: string,
-  genre: string,
-  release: string,
-  films: Films,
+  title: string;
+  genre: string;
+  release: string;
+  films: Films;
 }
 
 function Main({title, genre, release, films}: MainProps): JSX.Element {

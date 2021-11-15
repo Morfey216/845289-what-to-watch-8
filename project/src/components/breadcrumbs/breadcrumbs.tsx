@@ -2,8 +2,8 @@ import { generatePath, Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 type BreadcrumbsProps = {
-  id: number,
-  name: string,
+  id: number;
+  name: string;
 }
 
 function Breadcrumbs({id, name}: BreadcrumbsProps): JSX.Element {

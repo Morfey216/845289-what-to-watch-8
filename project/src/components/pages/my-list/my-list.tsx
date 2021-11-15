@@ -5,7 +5,7 @@ import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
 type MyListProps = {
-  films: Films,
+  films: Films;
 }
 
 function MyList({films}: MyListProps): JSX.Element {

@@ -3,8 +3,8 @@ import { AppRoute } from '../../const';
 import { Film } from '../../types/films';
 
 type FilmCardProps = {
-  film: Film,
-  setActiveFilm(id: number): void,
+  film: Film;
+  setActiveFilm(id: number): void;
 }
 
 function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {

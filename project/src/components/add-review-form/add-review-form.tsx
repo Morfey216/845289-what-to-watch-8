@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import RatingInputField from '../rating-input-field/rating-input-field';
 
 type AddReviewFormProps = {
-  id: number,
+  id: number;
 }
 
 const ratings = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];

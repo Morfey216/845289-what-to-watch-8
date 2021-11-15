@@ -1,8 +1,8 @@
 type RatingInputFieldProps = {
-  ratingId: number,
-  value: number,
-  isChecked: boolean,
-  setRating: (id: number) => void,
+  ratingId: number;
+  value: number;
+  isChecked: boolean;
+  setRating: (id: number) => void;
 }
 
 function RatingInputField({ratingId, value, isChecked, setRating}: RatingInputFieldProps): JSX.Element {

@@ -11,10 +11,10 @@ import SignIn from '../pages/sign-in/sign-in';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  title: string,
-  genre: string,
-  release: string,
-  films: Films,
+  title: string;
+  genre: string;
+  release: string;
+  films: Films;
 }
 
 function App({title, genre, release, films}: AppProps): JSX.Element {

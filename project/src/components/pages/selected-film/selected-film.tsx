@@ -7,8 +7,8 @@ import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
 type SelectedFilmProps = {
-  film: Film,
-  films: Films,
+  film: Film;
+  films: Films;
 }
 
 function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
