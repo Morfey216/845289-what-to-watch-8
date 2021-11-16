@@ -1,13 +1,17 @@
+import { Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Logo from '../../logo/logo';
+import Footer from '../../footer/footer';
+import UserBlock from '../../user-block/user-block';
 
 type MainProps = {
-  title: string,
-  genre: string,
-  release: string
+  title: string;
+  genre: string;
+  release: string;
+  films: Films;
 }
 
-function Main({title, genre, release}: MainProps): JSX.Element {
+function Main({title, genre, release, films}: MainProps): JSX.Element {
   return (
     <>
       <section className="film-card">
@@ -20,16 +24,7 @@ function Main({title, genre, release}: MainProps): JSX.Element {
         <header className="page-header film-card__head">
           <Logo />
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link" href="/">Sign out</a>
-            </li>
-          </ul>
+          <UserBlock />
         </header>
 
         <div className="film-card__wrap">
@@ -101,20 +96,14 @@ function Main({title, genre, release}: MainProps): JSX.Element {
             </li>
           </ul>
 
-          <FilmsList />
+          <FilmsList films = {films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
         </section>
 
-        <footer className="page-footer">
-          <Logo lightClass="logo__link--light"/>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>);
 }

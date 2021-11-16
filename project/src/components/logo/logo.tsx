@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type LogoProps = {
-  lightClass?: string
+  lightClass?: string;
 }
 
 function Logo({lightClass}: LogoProps): JSX.Element {

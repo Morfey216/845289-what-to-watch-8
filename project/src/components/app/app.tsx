@@ -1,7 +1,8 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { Films } from '../../types/films';
 import AddReview from '../pages/add-review/add-review';
-import Film from '../pages/film/film';
+import SelectedFilm from '../pages/selected-film/selected-film';
 import Main from '../pages/main/main';
 import MyList from '../pages/my-list/my-list';
 import NotFound from '../pages/not-found/not-found';
@@ -10,12 +11,13 @@ import SignIn from '../pages/sign-in/sign-in';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  title: string,
-  genre: string,
-  release: string
+  title: string;
+  genre: string;
+  release: string;
+  films: Films;
 }
 
-function App({title, genre, release}: AppProps): JSX.Element {
+function App({title, genre, release, films}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -24,6 +26,7 @@ function App({title, genre, release}: AppProps): JSX.Element {
             title = {title}
             genre = {genre}
             release = {release}
+            films = {films}
           />
         </Route>
         <Route path={AppRoute.SignIn} exact>
@@ -32,17 +35,17 @@ function App({title, genre, release}: AppProps): JSX.Element {
         <PrivateRoute
           exact
           path={AppRoute.MyList}
-          render={() => <MyList/>}
+          render={() => <MyList films = {films}/>}
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path={AppRoute.Film} exact>
-          <Film />
+          <SelectedFilm film={films[0]} films={films}/>
         </Route>
         <Route path={AppRoute.AddReview} exact>
-          <AddReview />
+          <AddReview film={films[0]}/>
         </Route>
         <Route path={AppRoute.Player} exact>
-          <Player />
+          <Player film={films[0]}/>
         </Route>
         <Route>
           <NotFound />
