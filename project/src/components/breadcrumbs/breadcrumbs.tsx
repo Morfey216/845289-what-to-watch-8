@@ -7,13 +7,8 @@ type BreadcrumbsProps = {
 }
 
 function Breadcrumbs({id, name}: BreadcrumbsProps): JSX.Element {
-  const pathToAddReview = generatePath(AppRoute.AddReview, {
-    id: id,
-  });
-
-  const pathToFilm = generatePath(AppRoute.Film, {
-    id: id,
-  });
+  const pathToAddReview = generatePath(AppRoute.AddReview, {id: id});
+  const pathToFilm = generatePath(AppRoute.Film, {id: id});
 
   return (
     <nav className="breadcrumbs">

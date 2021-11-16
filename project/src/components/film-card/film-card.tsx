@@ -10,9 +10,7 @@ type FilmCardProps = {
 function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {
   const {id, name, previewImage} = film;
 
-  const pathToFilm = generatePath(AppRoute.Film, {
-    id: id,
-  });
+  const pathToFilm = generatePath(AppRoute.Film, {id: id});
 
   return (
     <article className="small-film-card catalog__films-card"

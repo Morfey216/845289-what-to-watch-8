@@ -14,13 +14,8 @@ type SelectedFilmProps = {
 function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
   const history = useHistory();
 
-  const pathToAddReview = generatePath(AppRoute.AddReview, {
-    id: film.id,
-  });
-
-  const pathToPlayer = generatePath(AppRoute.Player, {
-    id: film.id,
-  });
+  const pathToAddReview = generatePath(AppRoute.AddReview, {id: film.id});
+  const pathToPlayer = generatePath(AppRoute.Player, {id: film.id});
 
   const handlePlayButtonClick = () => {
     history.push(pathToPlayer);

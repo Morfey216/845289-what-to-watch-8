@@ -1,11 +1,10 @@
 import { ChangeEvent, useState } from 'react';
+import { RATINGS } from '../../const';
 import RatingInputField from '../rating-input-field/rating-input-field';
 
 type AddReviewFormProps = {
   id: number;
 }
-
-const ratings = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 function AddReviewForm({id}: AddReviewFormProps): JSX.Element {
   const [rating, setRating] = useState(0);
@@ -16,7 +15,7 @@ function AddReviewForm({id}: AddReviewFormProps): JSX.Element {
       <form action="#" className="add-review__form">
         <div className="rating">
           <div className="rating__stars">
-            {ratings.map((itRating) => (
+            {RATINGS.map((itRating) => (
               <RatingInputField
                 key = {`star-${itRating}`}
                 ratingId = {itRating}
