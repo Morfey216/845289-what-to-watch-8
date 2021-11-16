@@ -1,13 +1,34 @@
-import { useRef } from 'react';
-import { Thumbnail } from '../../const';
+import { useEffect, useRef } from 'react';
+import { DELAY_PLAYBACK, Thumbnail } from '../../const';
 
 type VideoPlayerProps = {
   src: string;
+  poster: string;
 }
 
-function VideoPlayer({src}: VideoPlayerProps): JSX.Element {
+function VideoPlayer({src, poster}: VideoPlayerProps): JSX.Element {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (videoRef.current === null) {
+      return;
+    }
+
+    if (videoRef.current !== null) {
+      timeout = setTimeout(() => videoRef.current?.play(), DELAY_PLAYBACK);
+    }
+
+    videoRef.current.load();
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [src]);
 
   return (
     <video
@@ -15,7 +36,7 @@ function VideoPlayer({src}: VideoPlayerProps): JSX.Element {
       src={src}
       width={Thumbnail.Width}
       height={Thumbnail.Height}
-      autoPlay
+      poster={poster}
       muted
       style={{objectFit: 'cover'}}
     />
