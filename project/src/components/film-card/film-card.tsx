@@ -1,24 +1,29 @@
+import { useState } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, Thumbnail } from '../../const';
 import { Film } from '../../types/films';
+import VideoPlayer from '../video-player/video-player';
 
 type FilmCardProps = {
   film: Film;
-  setActiveFilm(id: number): void;
 }
 
-function FilmCard({film, setActiveFilm}: FilmCardProps): JSX.Element {
+function FilmCard({film}: FilmCardProps): JSX.Element {
   const {id, name, previewImage} = film;
+
+  const [isActive, setActive] = useState(false);
 
   const pathToFilm = generatePath(AppRoute.Film, {id: id});
 
   return (
     <article className="small-film-card catalog__films-card"
-      onMouseOver={() => setActiveFilm(id)}
-      onMouseOut={() => setActiveFilm(0)}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
     >
       <div className="small-film-card__image">
-        <img src={previewImage} alt={name} width="280" height="175" />
+        {isActive
+          ? <VideoPlayer src={film.previewVideoLink} poster={film.previewImage} />
+          : <img src={previewImage} alt={name} width={Thumbnail.Width} height={Thumbnail.Height} />}
       </div>
       <h3 className="small-film-card__title">
         <Link to={pathToFilm} className="small-film-card__link">
