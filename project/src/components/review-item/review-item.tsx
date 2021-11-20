@@ -15,7 +15,7 @@ function ReviewItem({review}: ReviewItemProps): JSX.Element {
 
         <footer className="review__details">
           <cite className="review__author">{user.name}</cite>
-          <time className="review__date" dateTime="2016-12-24">{format(new Date(date), 'MMMM d, y')}</time>
+          <time className="review__date" dateTime={format(new Date(date), 'y-M-dd')}>{format(new Date(date), 'MMMM d, y')}</time>
         </footer>
       </blockquote>
 
