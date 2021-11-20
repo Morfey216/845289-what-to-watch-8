@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { Film } from '../../types/films';
+import { getRunTimeFormat } from '../../utils/date';
 
 type FilmDetailsProps = {
   film: Film;
@@ -31,7 +32,7 @@ function FilmDetails({film}: FilmDetailsProps): JSX.Element {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Run Time</strong>
-          <span className="film-card__details-value">{/* todo */}1h 39m{runTime}</span>
+          <span className="film-card__details-value">{getRunTimeFormat(runTime)}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>

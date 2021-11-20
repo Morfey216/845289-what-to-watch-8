@@ -1,4 +1,5 @@
 import { Review } from '../../types/reviews';
+import { format } from 'date-fns';
 
 type ReviewItemProps = {
   review: Review;
@@ -14,7 +15,7 @@ function ReviewItem({review}: ReviewItemProps): JSX.Element {
 
         <footer className="review__details">
           <cite className="review__author">{user.name}</cite>
-          <time className="review__date" dateTime="2016-12-24">December 24, 2016{date}</time>
+          <time className="review__date" dateTime="2016-12-24">{format(new Date(date), 'MMMM d, y')}</time>
         </footer>
       </blockquote>
 
