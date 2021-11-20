@@ -6,7 +6,7 @@ type FilmReviewsProps = {
 }
 
 function FilmReviews({reviews}: FilmReviewsProps): JSX.Element {
-  const halfOfTheReviews = Math.ceil(reviews.length / 2);
+  const halfOfTheReviews = reviews ? Math.ceil(reviews.length / 2) : 0;
 
   const getReviewsItems = (reviewItems: Reviews) => (
     reviewItems.map((review) => <ReviewItem key={review.id} review={review} /> )

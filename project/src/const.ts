@@ -9,7 +9,17 @@ export enum Thumbnail {
 
 export const RATINGS = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-export const TAB_ITEMS = ['Overview', 'Details', 'Reviews'];
+export enum CurrentTab {
+  Overview = 'Overview',
+  Details = 'Details',
+  Reviews = 'Reviews'
+}
+
+export const TAB_ITEMS = [
+  CurrentTab.Overview,
+  CurrentTab.Details,
+  CurrentTab.Reviews,
+];
 
 export enum AppRoute {
   Main = '/',

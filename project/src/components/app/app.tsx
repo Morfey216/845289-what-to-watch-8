@@ -9,15 +9,17 @@ import NotFound from '../pages/not-found/not-found';
 import Player from '../pages/player/player';
 import SignIn from '../pages/sign-in/sign-in';
 import PrivateRoute from '../private-route/private-route';
+import { Reviews } from '../../types/reviews';
 
 type AppProps = {
   title: string;
   genre: string;
   release: string;
   films: Films;
+  reviews: Reviews;
 }
 
-function App({title, genre, release, films}: AppProps): JSX.Element {
+function App({title, genre, release, films, reviews}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -39,7 +41,7 @@ function App({title, genre, release, films}: AppProps): JSX.Element {
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path={AppRoute.Film} exact>
-          <SelectedFilm film={films[0]} films={films}/>
+          <SelectedFilm film={films[0]} films={films} reviews={reviews}/>
         </Route>
         <Route path={AppRoute.AddReview} exact>
           <AddReview film={films[0]}/>
