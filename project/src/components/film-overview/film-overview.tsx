@@ -1,5 +1,6 @@
 import { MAX_NUMBER_OF_ACTORS } from '../../const';
 import { Film } from '../../types/films';
+import { generateFilmRatingDescription } from '../../utils/film';
 
 type FilmOverviewProps = {
   film: Film;
@@ -13,7 +14,7 @@ function FilmOverview({film}: FilmOverviewProps):JSX.Element {
       <div className="film-rating">
         <div className="film-rating__score">{rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">Very good</span>
+          <span className="film-rating__level">{generateFilmRatingDescription(rating)}</span>
           <span className="film-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
