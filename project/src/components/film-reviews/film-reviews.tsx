@@ -1,28 +1,24 @@
 import { Reviews } from '../../types/reviews';
+import ReviewItem from '../review-item/review-item';
 
 type FilmReviewsProps = {
   reviews: Reviews;
 }
 
 function FilmReviews({reviews}: FilmReviewsProps): JSX.Element {
+  const halfOfTheReviews = Math.ceil(reviews.length / 2);
+
+  const getReviewsItems = (reviewItems: Reviews) => (
+    reviewItems.map((review) => <ReviewItem key={review.id} review={review} /> )
+  );
+
   return (
     <div className="film-card__reviews film-card__row">
-      {/* 3 cards in row */}
-      {/* todo */}
-
       <div className="film-card__reviews-col">
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">{comment}</p>
-
-            <footer className="review__details">
-              <cite className="review__author">{user.name}</cite>
-              <time className="review__date" dateTime="2016-12-24">December 24, 2016{date}</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">8,9</div>
-        </div>
+        {getReviewsItems(reviews.slice(0, halfOfTheReviews))}
+      </div>
+      <div className="film-card__reviews-col">
+        {getReviewsItems(reviews.slice(halfOfTheReviews))}
       </div>
     </div>
   );
