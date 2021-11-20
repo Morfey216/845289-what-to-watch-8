@@ -1,7 +1,8 @@
 import { Link, useHistory , generatePath } from 'react-router-dom';
-import { AppRoute, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../const';
+import { AppRoute } from '../../../const';
 import { Film, Films } from '../../../types/films';
 import { Reviews } from '../../../types/reviews';
+import { getSimilarFilms } from '../../../utils/film';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
@@ -85,10 +86,7 @@ function SelectedFilm({film, films, reviews}: SelectedFilmProps): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList films = {films.length > MAX_NUMBER_OF_SIMILAR_FILMS
-            ? films.slice(0, MAX_NUMBER_OF_SIMILAR_FILMS)
-            : films}
-          />
+          <FilmsList films = {getSimilarFilms(films, film.genre)} />
         </section>
 
         <Footer />
