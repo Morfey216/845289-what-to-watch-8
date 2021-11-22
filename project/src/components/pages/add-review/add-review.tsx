@@ -1,15 +1,20 @@
-import { Film } from '../../../types/films';
+import { connect, ConnectedProps } from 'react-redux';
+import { State } from '../../../types/state';
 import AddReviewForm from '../../add-review-form/add-review-form';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
-type AddReviewProps = {
-  film: Film;
-}
+const mapStateToProps = ({currentFilm}: State) => ({
+  currentFilm,
+});
 
-function AddReview({film}: AddReviewProps): JSX.Element {
-  const {id, posterImage, backgroundImage, name} = film;
+const connector = connect(mapStateToProps);
+
+type AddReviewProps = ConnectedProps<typeof connector>;
+
+function AddReview({currentFilm}: AddReviewProps): JSX.Element {
+  const {id, posterImage, backgroundImage, name} = currentFilm;
 
   return (
     <section className="film-card film-card--full">
@@ -37,4 +42,5 @@ function AddReview({film}: AddReviewProps): JSX.Element {
   );
 }
 
-export default AddReview;
+export {AddReview};
+export default connector(AddReview);

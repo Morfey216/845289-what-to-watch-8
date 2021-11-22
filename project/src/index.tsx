@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './components/app/app';
-import { films } from './mocks/films';
-import { reviews } from './mocks/reviews';
+import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      title = "The Grand Budapest Hotel"
-      genre = "Drama"
-      release = "2014"
-      films = {films}
-      reviews = {reviews}
-    />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'));

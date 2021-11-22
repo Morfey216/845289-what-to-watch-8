@@ -1,7 +1,7 @@
+import { connect, ConnectedProps } from 'react-redux';
 import { Link, useHistory , generatePath } from 'react-router-dom';
 import { AppRoute } from '../../../const';
-import { Film, Films } from '../../../types/films';
-import { Reviews } from '../../../types/reviews';
+import { State } from '../../../types/state';
 import { getSimilarFilms } from '../../../utils/film';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
@@ -9,11 +9,15 @@ import Logo from '../../logo/logo';
 import Tabs from '../../tabs/tabs';
 import UserBlock from '../../user-block/user-block';
 
-type SelectedFilmProps = {
-  film: Film;
-  films: Films;
-  reviews: Reviews;
-}
+const mapStateToProps = ({films, reviews}: State) => ({
+  films,
+  film: films[0],
+  reviews,
+});
+
+const connector = connect(mapStateToProps);
+
+type SelectedFilmProps = ConnectedProps<typeof connector>;
 
 function SelectedFilm({film, films, reviews}: SelectedFilmProps): JSX.Element {
   const history = useHistory();
@@ -95,4 +99,5 @@ function SelectedFilm({film, films, reviews}: SelectedFilmProps): JSX.Element {
   );
 }
 
-export default SelectedFilm;
+export {SelectedFilm};
+export default connector(SelectedFilm);
