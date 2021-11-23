@@ -1,17 +1,21 @@
 import { Link, useHistory , generatePath } from 'react-router-dom';
-import { AppRoute, MAX_NUMBER_OF_ACTORS, MAX_NUMBER_OF_SIMILAR_FILMS } from '../../../const';
+import { AppRoute } from '../../../const';
 import { Film, Films } from '../../../types/films';
+import { Reviews } from '../../../types/reviews';
+import { getSimilarFilms } from '../../../utils/film';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
+import Tabs from '../../tabs/tabs';
 import UserBlock from '../../user-block/user-block';
 
 type SelectedFilmProps = {
   film: Film;
   films: Films;
+  reviews: Reviews;
 }
 
-function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
+function SelectedFilm({film, films, reviews}: SelectedFilmProps): JSX.Element {
   const history = useHistory();
 
   const pathToAddReview = generatePath(AppRoute.AddReview, {id: film.id});
@@ -73,44 +77,7 @@ function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
             <div className="film-card__poster film-card__poster--big">
               <img src={film.posterImage} alt={`${film.name} poster`} width="218" height="327" />
             </div>
-
-            <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="/" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="film-rating">
-                <div className="film-rating__score">{film.rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">{film.scoresCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{film.description}</p>
-
-                <p className="film-card__director"><strong>Director: {film.director}</strong></p>
-
-                <p className="film-card__starring">
-                  <strong>
-                    Starring: {film.starring.length > MAX_NUMBER_OF_ACTORS
-                      ? `${film.starring.slice(0, MAX_NUMBER_OF_ACTORS).map((it) => it).join(', ')} and other`
-                      : `${film.starring.map((it) => it).join(', ')}`}
-                  </strong>
-                </p>
-              </div>
-            </div>
+            <Tabs film={film} reviews={reviews} />
           </div>
         </div>
       </section>
@@ -119,10 +86,7 @@ function SelectedFilm({film, films}: SelectedFilmProps): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList films = {films.length > MAX_NUMBER_OF_SIMILAR_FILMS
-            ? films.slice(0, MAX_NUMBER_OF_SIMILAR_FILMS)
-            : films}
-          />
+          <FilmsList films = {getSimilarFilms(films, film.genre)} />
         </section>
 
         <Footer />
