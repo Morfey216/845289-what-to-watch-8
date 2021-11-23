@@ -1,12 +1,17 @@
-import { Films } from '../../../types/films';
+import { connect, ConnectedProps } from 'react-redux';
+import { State } from '../../../types/state';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
-type MyListProps = {
-  films: Films;
-}
+const mapStateToProps = ({films}: State) => ({
+  films,
+});
+
+const connector = connect(mapStateToProps);
+
+type MyListProps = ConnectedProps<typeof connector>;
 
 function MyList({films}: MyListProps): JSX.Element {
   return (
@@ -29,4 +34,5 @@ function MyList({films}: MyListProps): JSX.Element {
   );
 }
 
-export default MyList;
+export {MyList};
+export default connector(MyList);

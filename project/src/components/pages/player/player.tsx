@@ -1,12 +1,17 @@
+import { connect, ConnectedProps } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Film } from '../../../types/films';
+import { State } from '../../../types/state';
 
-type PlayerProps = {
-  film: Film;
-}
+const mapStateToProps = ({currentFilm}: State) => ({
+  currentFilm,
+});
 
-function Player({film}: PlayerProps): JSX.Element {
-  const {posterImage, videoLink} = film;
+const connector = connect(mapStateToProps);
+
+type PlayerProps = ConnectedProps<typeof connector>;
+
+function Player({currentFilm}: PlayerProps): JSX.Element {
+  const {posterImage, videoLink} = currentFilm;
   const history = useHistory();
 
   const handleExitButtonClick = () => {
@@ -49,4 +54,5 @@ function Player({film}: PlayerProps): JSX.Element {
   );
 }
 
-export default Player;
+export {Player};
+export default connector(Player);

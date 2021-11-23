@@ -1,17 +1,20 @@
-import { Films } from '../../../types/films';
 import FilmsList from '../../films-list/films-list';
 import Logo from '../../logo/logo';
 import Footer from '../../footer/footer';
 import UserBlock from '../../user-block/user-block';
+import { State } from '../../../types/state';
+import { connect, ConnectedProps } from 'react-redux';
 
-type MainProps = {
-  title: string;
-  genre: string;
-  release: string;
-  films: Films;
-}
+const mapStateToProps = ({films, promoFilm}: State) => ({
+  films,
+  promoFilm,
+});
 
-function Main({title, genre, release, films}: MainProps): JSX.Element {
+const connector = connect(mapStateToProps);
+
+type MainProps = ConnectedProps<typeof connector>;
+
+function Main({promoFilm, films}: MainProps): JSX.Element {
   return (
     <>
       <section className="film-card">
@@ -34,10 +37,10 @@ function Main({title, genre, release, films}: MainProps): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{title}</h2>
+              <h2 className="film-card__title">{promoFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{release}</span>
+                <span className="film-card__genre">{promoFilm.genre}</span>
+                <span className="film-card__year">{promoFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -108,4 +111,5 @@ function Main({title, genre, release, films}: MainProps): JSX.Element {
     </>);
 }
 
-export default Main;
+export {Main};
+export default connector(Main);
