@@ -1,12 +1,12 @@
 import { connect, ConnectedProps } from 'react-redux';
-import { State } from '../../../types/state';
+import { State } from '../../../store/reducer';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
 import UserBlock from '../../user-block/user-block';
 
-const mapStateToProps = ({films}: State) => ({
-  films,
+const mapStateToProps = (state: State) => ({
+  films: state.data.films,
 });
 
 const connector = connect(mapStateToProps);

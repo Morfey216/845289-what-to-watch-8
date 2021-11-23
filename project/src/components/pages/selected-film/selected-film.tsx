@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from 'react-redux';
 import { Link, useHistory , generatePath } from 'react-router-dom';
 import { AppRoute } from '../../../const';
-import { State } from '../../../types/state';
+import { State } from '../../../store/reducer';
 import { getSimilarFilms } from '../../../utils/film';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';
@@ -9,10 +9,10 @@ import Logo from '../../logo/logo';
 import Tabs from '../../tabs/tabs';
 import UserBlock from '../../user-block/user-block';
 
-const mapStateToProps = ({films, reviews}: State) => ({
-  films,
-  film: films[0],
-  reviews,
+const mapStateToProps = (state: State) => ({
+  films: state.data.films,
+  film: state.data.currentFilm,
+  reviews: state.data.reviews,
 });
 
 const connector = connect(mapStateToProps);
