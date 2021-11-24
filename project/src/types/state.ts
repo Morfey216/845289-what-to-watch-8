@@ -3,6 +3,7 @@ import { Reviews } from './reviews';
 
 export type DataState = {
   films: Films;
+  genres: string[];
   currentFilm: Film;
   promoFilm: Film;
   reviews: Reviews;

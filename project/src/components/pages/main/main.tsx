@@ -3,7 +3,7 @@ import Logo from '../../logo/logo';
 import Footer from '../../footer/footer';
 import UserBlock from '../../user-block/user-block';
 import { connect, ConnectedProps } from 'react-redux';
-import { State } from '../../../store/reducer';
+import { State } from '../../../store/store';
 
 const mapStateToProps = (state: State) => ({
   films: state.data.films,

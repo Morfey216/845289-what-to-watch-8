@@ -11,5 +11,3 @@ export const rootReducer = combineReducers({
   [NameSpace.App]: appReducer,
   [NameSpace.Data]: dataReducer,
 });
-
-export type State = ReturnType<typeof rootReducer>;

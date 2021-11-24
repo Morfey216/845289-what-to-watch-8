@@ -5,6 +5,7 @@ import { Actions, ActionType } from './actions';
 
 const initialState: DataState = {
   films: films,
+  genres: [],
   currentFilm: films[0],
   promoFilm: films[0],
   reviews: reviews,

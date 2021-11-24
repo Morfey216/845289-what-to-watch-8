@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from 'react-redux';
 import { Link, useHistory , generatePath } from 'react-router-dom';
 import { AppRoute } from '../../../const';
-import { State } from '../../../store/reducer';
+import { State } from '../../../store/store';
 import { getSimilarFilms } from '../../../utils/film';
 import FilmsList from '../../films-list/films-list';
 import Footer from '../../footer/footer';

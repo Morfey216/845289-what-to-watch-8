@@ -3,6 +3,7 @@ export const MAX_NUMBER_OF_SIMILAR_FILMS = 4;
 export const DELAY_PLAYBACK = 1000;
 
 export const MINUTES_IN_HOUR = 60;
+export const ALL_GENRES_LABEL = 'All genres';
 
 export enum Thumbnail {
   Width = 280,
