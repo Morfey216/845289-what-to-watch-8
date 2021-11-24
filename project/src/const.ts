@@ -1,6 +1,7 @@
 export const MAX_NUMBER_OF_ACTORS = 4;
 export const MAX_NUMBER_OF_SIMILAR_FILMS = 4;
 export const MAX_NUMBER_OF_GENRES = 10;
+export const FILMS_SCREENING_STEP = 8;
 export const DELAY_PLAYBACK = 1000;
 
 export const MINUTES_IN_HOUR = 60;
