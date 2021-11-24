@@ -1,5 +1,5 @@
 import { connect, ConnectedProps } from 'react-redux';
-import { State } from '../../../store/reducer';
+import { State } from '../../../store/store';
 import AddReviewForm from '../../add-review-form/add-review-form';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Logo from '../../logo/logo';

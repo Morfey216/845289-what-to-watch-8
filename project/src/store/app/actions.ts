@@ -1,8 +1,10 @@
+import { Genre } from '../../types/genres';
+
 export enum ActionType {
   SetGenre = 'app/set-genre',
 }
 
-const setGenre = (genre: string) => ({
+const setGenre = (genre: Genre) => ({
   type: ActionType.SetGenre,
   payload: genre,
 } as const);

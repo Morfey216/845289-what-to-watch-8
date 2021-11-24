@@ -1,6 +1,6 @@
 import { connect, ConnectedProps } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { State } from '../../../store/reducer';
+import { State } from '../../../store/store';
 
 const mapStateToProps = (state: State) => ({
   currentFilm: state.data.currentFilm,
